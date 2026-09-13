@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Surprise 🎂</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top,#283d72 0%,#111a35 45%,#080d1c 100%);
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.2;transform:scale(.7);}
+    to{opacity:1;transform:scale(1.3);}
+}
+
+/* BALLOONS */
+
+.balloon{
+    position:fixed;
+    width:55px;
+    height:70px;
+    border-radius:50% 50% 45% 45%;
+    z-index:1;
+    animation:float 5s ease-in-out infinite;
+}
+
+.balloon::after{
+    content:"";
+    position:absolute;
+    width:1px;
+    height:100px;
+    background:#aaa;
+    left:50%;
+    top:68px;
+}
+
+.balloon1{
+    background:#ff6b81;
+    left:5%;
+    top:15%;
+}
+
+.balloon2{
+    background:#65d8ff;
+    right:7%;
+    top:25%;
+    animation-delay:1s;
+}
+
+.balloon3{
+    background:#ffd166;
+    left:12%;
+    bottom:10%;
+    animation-delay:2s;
+}
+
+.balloon4{
+    background:#b28cff;
+    right:13%;
+    bottom:12%;
+    animation-delay:1.5s;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0) rotate(-4deg);}
+    50%{transform:translateY(-25px) rotate(5deg);}
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    position:relative;
+    z-index:2;
+    width:min(1100px,92%);
+    margin:auto;
+    padding:50px 0;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.badge{
+    display:inline-block;
+    padding:9px 18px;
+    border-radius:50px;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.2);
+    backdrop-filter:blur(10px);
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(42px,8vw,80px);
+    line-height:1;
+    background:linear-gradient(90deg,#fff,#8bdcff,#c8a8ff,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:titleGlow 3s infinite alternate;
+}
+
+@keyframes titleGlow{
+    from{filter:drop-shadow(0 0 5px #65d8ff);}
+    to{filter:drop-shadow(0 0 25px #b28cff);}
+}
+
+.hero p{
+    color:#cbd5f0;
+    margin-top:15px;
+    font-size:18px;
+}
+
+/* CARD */
+
+.card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(18px);
+    border-radius:30px;
+    padding:35px;
+    box-shadow:0 25px 70px rgba(0,0,0,.3);
+    margin-bottom:30px;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message{
+    text-align:center;
+}
+
+.message h2{
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.message-text{
+    color:#dce5ff;
+    font-size:17px;
+    line-height:1.8;
+    max-width:750px;
+    margin:auto;
+}
+
+.wishes{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:30px;
+}
+
+.wish{
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.07);
+    transition:.3s;
+}
+
+.wish:hover{
+    transform:translateY(-8px);
+    background:rgba(255,255,255,.13);
+}
+
+.wish .icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.wish p{
+    color:#cdd7ef;
+}
+
+/* =========================
+   CAKE
+========================= */
+
+.cake-section{
+    text-align:center;
+}
+
+.cake-section h2{
+    margin-bottom:10px;
+}
+
+.instruction{
+    color:#aebce0;
+    margin-bottom:30px;
+}
+
+.cake-area{
+    position:relative;
+    width:330px;
+    height:320px;
+    margin:auto;
+}
+
+/* PLATE */
+
+.plate{
+    position:absolute;
+    width:300px;
+    height:25px;
+    background:#dce8ff;
+    border-radius:50%;
+    bottom:25px;
+    left:15px;
+    box-shadow:0 8px 15px rgba(0,0,0,.4);
+}
+
+/* CAKE */
+
+.cake{
+    position:absolute;
+    width:240px;
+    height:125px;
+    left:45px;
+    bottom:45px;
+    z-index:3;
+
+    background:linear-gradient(#9b553c,#743625);
+    border-radius:20px 20px 35px 35px;
+    box-shadow:0 15px 20px rgba(0,0,0,.3);
+}
+
+.cake::before{
+    content:"";
+    position:absolute;
+    width:240px;
+    height:45px;
+    top:-15px;
+    left:0;
+    background:#f7d7c5;
+    border-radius:50%;
+}
+
+.cake::after{
+    content:"";
+    position:absolute;
+    width:240px;
+    height:20px;
+    top:0;
+    left:0;
+    background:#6f2c1d;
+    border-radius:50%;
+}
+
+/* CREAM */
+
+.cream{
+    position:absolute;
+    top:-5px;
+    width:30px;
+    height:30px;
+    
+    border-radius:50%;
+    z-index:3;
+}
+
+.cream1{left:25px;}
+.cream2{left:75px;}
+.cream3{left:125px;}
+.cream4{left:175px;}
+
+/* CANDLE */
+
+.candles{
+    position:absolute;
+    top:105px;
+    
+    right: 5px;
+    width:100%;
+    z-index:10;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:38px;
+}
+
+.candle{
+    position:relative;
+    width:13px;
+    height:60px;
+    background:repeating-linear-gradient(
+        45deg,
+        #ff6b81 0,
+        #ff6b81 7px,
+        #fff 7px,
+        #fff 14px
+    );
+    border-radius:4px;
+}
+
+.flame{
+    position:absolute;
+    width:18px;
+    height:25px;
+    background:linear-gradient(#fff176,#ff9800,#ff5722);
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    top:-25px;
+    left:-2px;
+    box-shadow:0 0 20px #ffb300;
+    animation:flicker .15s infinite alternate;
+    cursor:pointer;
+}
+
+@keyframes flicker{
+    from{transform:rotate(-45deg) scale(1);}
+    to{transform:rotate(-43deg) scale(1.1);}
+}
+
+.flame.off{
+    display:none;
+}
+
+.smoke{
+    position:absolute;
+    top:-35px;
+    left:3px;
+    font-size:20px;
+    display:none;
+}
+
+.smoke.show{
+    display:block;
+    animation:smoke 1.5s forwards;
+}
+
+@keyframes smoke{
+    from{opacity:1;transform:translateY(0);}
+    to{opacity:0;transform:translateY(-50px);}
+}
+
+/* CAKE TEXT */
+
+.cake-text{
+    position:absolute;
+    z-index:6;
+    top:45px;
+    width:100%;
+    text-align:center;
+    font-weight:bold;
+    color:#fff;
+    font-size:17px;
+}
+
+/* BUTTON */
+
+button{
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.main-btn{
+    margin-top:25px;
+    padding:14px 25px;
+    border-radius:50px;
+    color:white;
+    background:linear-gradient(90deg,#5b7cfa,#a16bff);
+    box-shadow:0 8px 20px rgba(105,100,255,.3);
+    transition:.3s;
+}
+
+.main-btn:hover{
+    transform:translateY(-3px) scale(1.03);
+}
+
+/* =========================
+   GIFTS
+========================= */
+
+.gift-title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.gifts{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.gift{
+    height:150px;
+    background:rgba(255,255,255,.06);
+    border-radius:22px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:.35s;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.gift:hover{
+    transform:translateY(-10px) rotate(2deg);
+    background:rgba(255,255,255,.13);
+}
+
+.gift-box{
+    font-size:55px;
+}
+
+.gift span{
+    margin-top:8px;
+    color:#c9d5f2;
+}
+
+/* =========================
+   POPUP
+========================= */
+
+.popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(8px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    padding:20px;
+}
+
+.popup.active{
+    display:flex;
+}
+
+.popup-box{
+    width:min(450px,100%);
+    background:#172342;
+    border:1px solid rgba(255,255,255,.15);
+    padding:35px;
+    border-radius:30px;
+    text-align:center;
+    animation:popup .4s;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.5) rotate(-10deg);
+        opacity:0;
+    }
+    to{
+        transform:scale(1) rotate(0);
+        opacity:1;
+    }
+}
+
+.popup-icon{
+    font-size:70px;
+}
+
+.popup-box h2{
+    margin:15px 0;
+}
+
+.popup-box p{
+    color:#cdd7ef;
+    line-height:1.7;
+}
+
+.close{
+    margin-top:25px;
+    padding:12px 25px;
+    background:#fff;
+    color:#172342;
+    border-radius:50px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+    padding:30px 0;
+    color:#8392b8;
+}
+
+.heart{
+    display:inline-block;
+    animation:heart 1s infinite;
+}
+
+@keyframes heart{
+    50%{transform:scale(1.3);}
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti{
+    position:fixed;
+    width:10px;
+    height:15px;
+    top:-20px;
+    z-index:200;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:800px){
+
+    .wishes{
+        grid-template-columns:1fr;
+    }
+
+    .gifts{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .card{
+        padding:25px 18px;
+    }
+
+    .balloon{
+        transform:scale(.7);
+    }
+}
+
+@media(max-width:450px){
+
+    .cake-area{
+        transform:scale(.85);
+        margin-top:-20px;
+        margin-bottom:-20px;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .gifts{
+        gap:10px;
+    }
+
+    .gift{
+        height:130px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="stars" id="stars"></div>
+
+<div class="balloon balloon1"></div>
+<div class="balloon balloon2"></div>
+<div class="balloon balloon3"></div>
+<div class="balloon balloon4"></div>
+
+
+<div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="badge">
+            🎉 A LITTLE SURPRISE FOR YOU 🎉
+        </div>
+
+        <h1>Happy Birthday! 🎂</h1>
+
+    </section>
+
+
+    <!-- MESSAGE -->
+    <section class="card message">
+
+        <h2>🎈 Happy Birthday, Bro! 🎈</h2>
+
+        
+
+        <div class="wishes">
+
+            <div class="wish">
+                <div class="icon">💰</div>
+                <h3>Rezeki</h3>
+                <p>
+                    Semoga makin lancar,
+                    ngalir terus tanpa macet.
+                </p>
+            </div>
+
+            <div class="wish">
+                <div class="icon">🚀</div>
+                <h3>Success</h3>
+                <p>
+                    Semoga semua target
+                    satu per satu tercapai.
+                </p>
+            </div>
+
+            <div class="wish">
+                <div class="icon">❤️</div>
+                <h3>Happiness</h3>
+                <p>
+                    Semoga selalu dikelilingi
+                    orang-orang baik.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CAKE -->
+    <section class="card cake-section">
+
+        <h2>🎂 Birthday Cake</h2>
+
+        <p class="instruction">
+            Lilinnya nyala nih... 👀<br>
+            <b>Klik api lilinnya buat matiin!</b> 🕯️
+        </p>
+
+        <div class="cake-area">
+
+            <div class="candles">
+
+                <div class="candle">
+                    <div class="flame" onclick="blowCandle(this)"></div>
+                    <div class="smoke">💨</div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame" onclick="blowCandle(this)"></div>
+                    <div class="smoke">💨</div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame" onclick="blowCandle(this)"></div>
+                    <div class="smoke">💨</div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame" onclick="blowCandle(this)"></div>
+                    <div class="smoke">💨</div>
+                </div>
+
+            </div>
+
+            <div class="cake">
+
+                <div class="cream cream1"></div>
+                <div class="cream cream2"></div>
+                <div class="cream cream3"></div>
+                <div class="cream cream4"></div>
+
+                <div class="cake-text">
+                    HAPPY<br>BIRTHDAY BRO! 🎉
+                </div>
+
+            </div>
+
+            <div class="plate"></div>
+
+        </div>
+
+        <button class="main-btn" onclick="blowAll()">
+            🌬️ Tiup Semua Lilin
+        </button>
+
+    </section>
+
+
+    <!-- GIFTS -->
+    <section class="card">
+
+        <div class="gift-title">
+
+            <h2>🎁 Buka Kado-Kadonya!</h2>
+
+            <p style="color:#aebce0;margin-top:8px;">
+                Ada hadiah random di dalamnya 👀
+            </p>
+
+        </div>
+
+
+        <div class="gifts">
+
+            <div class="gift" onclick="openGift(0)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #1</span>
+            </div>
+
+            <div class="gift" onclick="openGift(1)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #2</span>
+            </div>
+
+            <div class="gift" onclick="openGift(2)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #3</span>
+            </div>
+
+            <div class="gift" onclick="openGift(3)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #4</span>
+            </div>
+
+            <div class="gift" onclick="openGift(4)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #5</span>
+            </div>
+
+            <div class="gift" onclick="openGift(5)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #6</span>
+            </div>
+
+            <div class="gift" onclick="openGift(6)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #7</span>
+            </div>
+
+            <div class="gift" onclick="openGift(7)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #8</span>
+            </div>
+
+            <div class="gift" onclick="openGift(8)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #9</span>
+            </div>
+
+            <div class="gift" onclick="openGift(9)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #10</span>
+            </div>
+
+            <div class="gift" onclick="openGift(10)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #11</span>
+            </div>
+
+            <div class="gift" onclick="openGift(11)">
+                <div class="gift-box">🎁</div>
+                <span>Kado #12</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="card message">
+
+        <h2>💌 Last Message</h2>
+
+        <p class="message-text">
+
+            AZEKKK AZEKKK KATA GUE MAH TRAKTIRAN INIII
+
+            <br><br>
+
+            Sekali lagi...
+
+            <br>
+
+            <b style="font-size:24px;">
+                HAPPY BIRTHDAY! 🎂🎉
+            </b>
+
+            <br><br>
+
+            Semoga tahun ini jadi salah satu
+            tahun terbaik dalam hidupmu.
+
+            <br><br>
+
+            
+
+            <span class="heart">👻</span>
+            Hidup sehat hidup waras.
+            <span class="heart">👻</span>
+
+            <span class="heart">👻</span>
+            Jangan keseringan begadang.
+            <span class="heart">👻</span>
+
+        </p>
+
+    </section>
+
+
+    <div class="footer">
+        Dari saya...
+    </div>
+
+</div>
+
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+    <div class="popup-box">
+
+        <div class="popup-icon" id="popupIcon">
+            🎁
+        </div>
+
+        <h2 id="popupTitle">
+            Surprise!
+        </h2>
+
+        <p id="popupMessage">
+            ...
+        </p>
+
+        <button class="close" onclick="closePopup()">
+            Tutup 🎀
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   STARS
+========================= */
+
+const stars = document.getElementById("stars");
+
+for(let i=0;i<100;i++){
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left = Math.random()*100 + "%";
+    star.style.top = Math.random()*100 + "%";
+
+    star.style.animationDelay =
+        Math.random()*2 + "s";
+
+    stars.appendChild(star);
+}
+
+
+/* =========================
+   CANDLE
+========================= */
+
+let candlesOff = 0;
+
+function blowCandle(flame){
+
+    if(flame.classList.contains("off"))
+        return;
+
+    flame.classList.add("off");
+
+    const smoke =
+        flame.parentElement.querySelector(".smoke");
+
+    smoke.classList.add("show");
+
+    candlesOff++;
+
+    createConfetti(10);
+
+    if(candlesOff === 4){
+
+        setTimeout(()=>{
+
+            showPopup(
+                "🎉",
+                "YEEE LILINYA MATI!",
+                "Yeayyy! Sekarang tinggal bikin wish-nya. Semoga terkabul yaa! ✨"
+            );
+
+        },700);
+
+    }
+
+}
+
+
+function blowAll(){
+
+    const flames =
+        document.querySelectorAll(".flame");
+
+    flames.forEach((flame,index)=>{
+
+        setTimeout(()=>{
+
+            blowCandle(flame);
+
+        },index*250);
+
+    });
+
+}
+
+
+/* =========================
+   GIFTS
+========================= */
+
+const gifts = [
+
+    {
+        icon:"🍫",
+        title:"Cokelat Virtual!",
+        message:"Karena hidup kadang pahit, nih cokelat dulu biar manis... walaupun yang manis tetap aku. WKWK 🍫😂"
+    },
+
+    {
+        icon:"💰",
+        title:"Saldo Dadakan!",
+        message:"Selamat! Kamu mendapatkan Rp999.999.999... PRANKK!!😭"
+    },
+
+
+    {
+        icon:"💤",
+        title:"Voucher Tidur Seharian!",
+        message:"Voucher ini berlaku untuk tidur sepuasnya tanpa rasa bersalah. Bangun-bangun semoga hidup langsung lebih tenang. biar ga begadang lagi dengan alasan jalan-jalan padahal lagi meratapi nasib. 😴✨"
+    },
+
+    {
+        icon:"🕶️",
+        title:"Kacamata Anti Galau!",
+        message:"Pakai kacamata ini kalau mulai galau. Efek samping: masalah tetap ada, tapi setidaknya kelihatan keren pas mikirinnya. 😎😂"
+    },
+
+
+    {
+        icon:"🍕",
+        title:"Pizza!",
+        message:"Pizza virtual untuk kamu. Kalorinya 0 karena cuma bisa dimakan lewat imajinasi. 🍕"
+    },
+
+    {
+        icon:"🏆",
+        title:"Achievement Unlocked!",
+        message:"Achievement unlocked: berhasil bertahan hidup sampai umur sekarang, ga bundir. Respect! 🫡🏆"
+    },
+
+    {
+        icon:"🍵",
+        title:"Matcha!",
+        message:"Satu matcha virtual untuk menemani hari-hari penuh drama. Minumnya pelan-pelan, jangan sampai ikut nge drop 🍵😂"
+    },
+
+    { 
+        icon:"🧻", 
+        title:"Tisu Darurat!", 
+        message:"Untuk menghapus air mata, keringat, dosa, atau chat yang salah kirim. Satu tisu untuk segala masalah. 🧻💀" 
+    },
+
+    { 
+        icon:"📱", 
+        title:"HP Khusus Kamu!", 
+        message:"Selamat! Kamu dapat HP baru. Fiturnya lengkap: bisa buka WhatsApp, Instagram, TikTok... tapi tetap nggak bisa buka hati dia. 😭📱" 
+
+    },
+
+    { 
+        icon:"🎫", 
+        title:"Tiket Jadi Normal!", 
+        message:"Selamat! Kamu mendapatkan tiket untuk menjadi manusia normal selama 24 jam. Gunakan sebaik-baiknya karena masa berlaku tidak bisa diperpanjang. 🤡🎫" 
+
+    },
+
+    { 
+        icon:"⏰", 
+        title:"Alarm Anti Telat!", 
+        message:"Alarm khusus buat kamu yang biasanya telat masuk sekolah. Semoga tahun ini konsep waktu mulai kamu pahami dan ga masuk bk lagi. 😭⏰" 
+
+    },
+
+    {
+        icon:"🎁",
+        title:"Kado Rahasia!",
+        message:"Isinya adalah... doa supaya semua wish kamu tahun ini beneran kejadian. ❤️✨"
+    }
+
+];
+
+
+function openGift(index){
+
+    const gift = gifts[index];
+
+    showPopup(
+        gift.icon,
+        gift.title,
+        gift.message
+    );
+
+    createConfetti(20);
+
+}
+
+
+/* =========================
+   POPUP
+========================= */
+
+function showPopup(icon,title,message){
+
+    document.getElementById("popupIcon").textContent = icon;
+
+    document.getElementById("popupTitle").textContent = title;
+
+    document.getElementById("popupMessage").textContent = message;
+
+    document.getElementById("popup").classList.add("active");
+
+}
+
+
+function closePopup(){
+
+    document.getElementById("popup").classList.remove("active");
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti(amount){
+
+    for(let i=0;i<amount;i++){
+
+        const confetti =
+            document.createElement("div");
+
+        confetti.className = "confetti";
+
+        confetti.style.left =
+            Math.random()*100 + "vw";
+
+        confetti.style.animationDuration =
+            (2 + Math.random()*3) + "s";
+
+        confetti.style.background =
+            randomColor();
+
+        confetti.style.transform =
+            `rotate(${Math.random()*360}deg)`;
+
+        document.body.appendChild(confetti);
+
+        setTimeout(()=>{
+            confetti.remove();
+        },5000);
+
+    }
+
+}
+
+
+function randomColor(){
+
+    const colors = [
+        "#ff6b81",
+        "#ffd166",
+        "#65d8ff",
+        "#b28cff",
+        "#7bed9f",
+        "#ffffff"
+    ];
+
+    return colors[
+        Math.floor(Math.random()*colors.length)
+    ];
+
+}
+
+
+/* =========================
+   OPEN POPUP
+========================= */
+
+document.getElementById("popup")
+.addEventListener("click",function(e){
+
+    if(e.target === this){
+
+        closePopup();
+
+    }
+
+});
+
+
+/* =========================
+   WELCOME CONFETTI
+========================= */
+
+setTimeout(()=>{
+
+    createConfetti(50);
+
+},800);
+
+</script>
+
+</body>
+</html>
